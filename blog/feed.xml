@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Teakettle Labs</title>
+    <description>Teakettle Labs - Making NLP development more equitable and inclusive by raising awareness of bias and enabling actionable change.</description>
+    <link>https://teakettlelabs.com/</link>
+    <atom:link href="https://teakettlelabs.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 01 Sep 2022 09:30:26 -0700</pubDate>
+    <lastBuildDate>Thu, 01 Sep 2022 09:30:26 -0700</lastBuildDate>
+    <generator>Jekyll v3.9.2</generator>
+    
+      <item>
+        <title>Ethics and Large Language Models</title>
+        <description>&lt;p&gt;In the past decade, we’ve seen huge advancements in machine learning from vanilla neural networks to Large Language Models (LLMs) that seem capable of a surprising level of human-level performance in Natural Language Processing (NLP) tasks. These have led to the establishment of general-purpose foundation models that make advanced NLP accessible - even without a team of specialists - across many markets and domains, leading to widespread adoption.&lt;/p&gt;
+
+&lt;p&gt;Enterprise users may interact with sentiment analysis to understand customer opinions, information extraction and summarization to identify key aspects of a document, and transcription to provide records of meetings and improve accessibility. End users may interact with chatbots that answer simple questions, writing assistants that suggest grammar changes, search and personalization that return results individualized to the user, and machine translation that helps communicate across languages.&lt;/p&gt;
+
+&lt;p&gt;Such applications make it clear that LLMs are both getting more powerful and more prevalent, but what’s less obvious sometimes is the limitations of these models and the ethical concerns those limitations raise. The sociotechnical complexities of LLMs often end up causing real-world problems that the engineering teams designing LLM applications, despite being deeply technically knowledgeable, are unprepared for.&lt;/p&gt;
+
+&lt;figure style=&quot;width:80%;margin-left:auto;margin-right:auto&quot;&gt;
+
+    
+    &lt;img src=&quot;/assets/images/blog/2022-09-01-ethics-and-llms/teakettle_problem-context_newsmaking_harms.png&quot; alt=&quot;A set of headlines for harms that LLMs have caused, including the Amazon AI recruiting tool, Microsoft&apos;s Twitter chatbot Tay, and Facebook&apos;s Arabic mistranslation.&quot; /&gt;
+    
+    
+        &lt;figcaption&gt;LLM applications make headlines when they cause real-world harms&lt;/figcaption&gt;
+    
+    &lt;small&gt;
+    
+    
+    &lt;/small&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;There are quite a few well-publicized examples of how AI models can act in ways that humans find problematic, even when designed for beneficial uses. Amazon, for example, &lt;a href=&quot;https://www.reuters.com/article/us-amazon-com-jobs-automation-insight/amazon-scraps-secret-ai-recruiting-tool-that-showed-bias-against-women-idUSKCN1MK08G&quot;&gt;had to abandon an AI recruiting tool&lt;/a&gt; they had been working on after discovering that their model learned to discriminate against women. The model had been trained on past resumes submitted to the company, which were heavily skewed towards men. The bias towards men in the data led to bias in the model despite that being completely unintended by its designers.&lt;/p&gt;
+
+&lt;p&gt;Another example is when &lt;a href=&quot;https://www.theverge.com/2016/3/24/11297050/tay-microsoft-chatbot-racist&quot;&gt;Microsoft had to take down Tay, their Twitter chatbot&lt;/a&gt;, after less than a day due to the amount of toxicity it learned from the users it interacted with. Although the bot wasn’t trained to produce such toxicity originally, by allowing unfiltered new data from its online interactions to be fed back into the model, it quickly got out of hand in a way the designers hadn’t anticipated.&lt;/p&gt;
+
+&lt;p&gt;There are even some examples of fairly severe real-world consequences, such as when a Palestinian man was arrested by Israeli Police after a &lt;a href=&quot;https://www.haaretz.com/israel-news/2017-10-22/ty-article/palestinian-arrested-over-mistranslated-good-morning-facebook-post/0000017f-db61-d856-a37f-ffe181000000&quot;&gt;Facebook machine translation model incorrectly translated his post of “good morning”&lt;/a&gt; as “attack them” in Hebrew and “hurt them” in English. Even models that have great accuracy will have poor performance in some cases, and when the stakes are high for use cases such as law or health care, this can lead to some extremely worrying outcomes.&lt;/p&gt;
+
+&lt;p&gt;These are just a few high-profile examples of the way that LLM applications can cause harm, but there are many more subtle, unexpected, and undesired outcomes as well. In this series of articles, we’ll provide insight into some of the limitations and ethical issues of LLMs and what we can do about it, looking at the following topics:&lt;/p&gt;
+
+&lt;h3 id=&quot;bias&quot;&gt;Bias&lt;/h3&gt;
+&lt;p&gt;What exactly is bias? What does it mean for our data and our models?&lt;/p&gt;
+
+&lt;h3 id=&quot;concrete-harms&quot;&gt;Concrete Harms&lt;/h3&gt;
+&lt;p&gt;What impact does using LLMs have? What kind of harms can it cause?&lt;/p&gt;
+
+&lt;h3 id=&quot;fluency-vs-understanding&quot;&gt;Fluency vs Understanding&lt;/h3&gt;
+&lt;p&gt;What is the difference between fluency and understanding? How much do LLMs actually understand, and why does that matter?&lt;/p&gt;
+
+&lt;h3 id=&quot;large-dataset-and-model-bias&quot;&gt;Large Dataset and Model Bias&lt;/h3&gt;
+&lt;p&gt;Big data is key to LLMs, but how good is the data we’re training on? How can we work with data that has problems?&lt;/p&gt;
+
+&lt;h3 id=&quot;good-organizational-practices&quot;&gt;Good Organizational Practices&lt;/h3&gt;
+&lt;p&gt;How should we approach designing and using LLMs? What are some good practices to follow?&lt;/p&gt;
+
+&lt;p&gt;We’re hoping that through this discussion we can help LLM application engineers and designers avoid a few of the pitfalls that come with such complex sociotechnical systems and create the best experience possible for users.&lt;/p&gt;
+
+</description>
+        <pubDate>Thu, 01 Sep 2022 00:00:00 -0700</pubDate>
+        <link>https://teakettlelabs.com/blog/2022/09/01/ethics-and-llms.html</link>
+        <guid isPermaLink="true">https://teakettlelabs.com/blog/2022/09/01/ethics-and-llms.html</guid>
+        
+      </item>
+    
+  </channel>
+</rss>
