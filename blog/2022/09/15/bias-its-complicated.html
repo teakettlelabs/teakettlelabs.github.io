@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <title>Teakettle Labs</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image">
+<meta name="og:locale" content="en_US">
+<meta name="og:site_name" content="Teakettle Labs"><meta name="og:title" content="Bias - It's Complicated">
+<meta name="twitter:title" content="Bias - It's Complicated"><meta name="og:type" content="article"><meta name="og:image" content="https://teakettlelabs.com/assets/images/blog/2022-09-15-bias-its-complicated/teakettle_bias_title_6_c.png">
+<meta name="twitter:image" content="https://teakettlelabs.com/assets/images/blog/2022-09-15-bias-its-complicated/teakettle_bias_title_6_c.png"><meta name="og:url" content="https://teakettlelabs.com/blog/2022/09/15/bias-its-complicated.html">
+<meta name="twitter:url" content="https://teakettlelabs.com/blog/2022/09/15/bias-its-complicated.html"><meta name="description" content="Bias can be complex and even controversial, but is worth understanding since it impacts both our models and the world around us.">
+<meta name="og:description" content="Bias can be complex and even controversial, but is worth understanding since it impacts both our models and the world around us.">
+<meta name="twitter:description" content="Bias can be complex and even controversial, but is worth understanding since it impacts both our models and the world around us.">
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/rsq_logo_32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/rsq_logo_16.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/rsq_logo_96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/rsq_logo_192.png">
+  <link rel="icon" type="image/png" sizes="400x400" href="/assets/images/rsq_logo_400.png">
+  <link rel="alternate" type="application/rss+xml" href="https://teakettlelabs.com/blog/feed.xml"><script defer data-domain="teakettlelabs.com" src="https://plausible.io/js/plausible.js"></script></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">
+      <img src="/assets/images/logo_w_text_horizontal.png" alt="Teakettle Labs" height="40px">
+    </a>
+
+    <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About Us</a><a class="page-link" href="/blog/">Blog</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h2 class="post-title p-name" itemprop="name headline">Bias - It&#39;s Complicated</h2>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2022-09-15T00:00:00-07:00" itemprop="datePublished">Sep 15, 2022
+      </time>
+      
+
+(9 minute read)
+
+•
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">
+            Shannon Ladymon
+          </span></span>•
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">
+            Sushanth Sowmyan
+          </span></span></p><p>
+        <img src="/assets/images/blog/2022-09-15-bias-its-complicated/teakettle_bias_title_6_c.png" alt="Bias - It&#39;s Complicated" style="width:100%;margin-left:auto;margin-right:auto" />
+      </p></header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>While “bias” is a term you’re doubtless familiar with, it may mean something rather different to you than it does to others depending on your background and priorities. It’s helpful to take a brief look at what exactly bias is before delving into the details of how it affects LLMs.</p>
+
+<h3 id="etymology-of-bias">Etymology of Bias</h3>
+
+<p>We can date the history of the word bias in English back <a href="https://www.etymonline.com/word/bias">to the 16th century</a> when it was borrowed from French and meant simply an “oblique or diagonal line,” but soon was used in a figurative sense to mean a “one-sided tendency of mind.” The extension of the word bias to social issues has been prevalent since the late 19th century, such as by sociologist <a href="https://en.wikipedia.org/wiki/Herbert_Spencer">Herbert Spencer</a> who used bias to question “objective neutrals” in points-of-view. In modern social sciences, influenced by feminism, racial justice, and viewpoints challenging colonialism, bias is used to talk about power dynamics and how systems can be biased against individuals and groups.</p>
+
+<h3 id="statistical-bias">Statistical Bias</h3>
+
+<p>Although the field of statistics dates back to the Islamic Golden Age (over a millennium ago), modern statistics that focuses on regression, correlation, etc., dates to the late 19th century. In this field, an error was defined as the difference between a prediction and an observation, and errors were classified as random (noise) or systematic (bias). Bias, in this sense, said that the predictions were wrong because we didn’t collect representative data, or weren’t able to collect some important variable due to technological (e.g. inaccurate instruments) or human (e.g. censoring) limitations.</p>
+
+<h3 id="algorithmic-bias">Algorithmic Bias</h3>
+
+<p>In computer science, one of the early examinations of “algorithmic bias” was by <a href="https://en.wikipedia.org/wiki/Computer_Power_and_Human_Reason">Joseph Weizenbaum</a> (the original developer of the <a href="https://en.wikipedia.org/wiki/ELIZA">ELIZA</a> system), who suggested in 1976 that bias could arise from both the data used in a program as well as the way a program is coded. He made the case that programs are a sequence of rules created by humans for a computer to follow. By following these rules consistently, such programs “embody law” and encode the programmer’s imagination of how the world works, including their biases, assumptions and expectations. He noted that any data fed into a machine additionally reflects “human decision-making processes” as the data being used was selected by humans. Although it’s tempting to view algorithmic approaches as neutral, this framework helps us see how algorithms end up locking in the bias of the people who designed them, while also lacking any form of human value-based judgment to evaluate results.</p>
+
+<p>An early example of what he warned about was seen soon after in an instance of algorithmic bias that resulted in 60 women and ethnic minorities being <a href="https://doi.org/10.1136/bmj.296.6623.657">denied entry</a> to St. George’s Hospital Medical School each year from 1982 to 1986, based on implementation of a new computer-guidance assessment system that denied entry to women and men with “foreign-sounding names” based on historical trends in admissions. And these problems still persist in modern-day algorithms, such as when Amazon had to scrap a resume-scanning tool it was developing after finding out that it had <a href="https://www.reuters.com/article/us-amazon-com-jobs-automation-insight/amazon-scraps-secret-ai-recruiting-tool-that-showed-bias-against-women-idUSKCN1MK08G">learned to be sexist</a>, as we discussed in our <a href="/blog/2022/09/01/ethics-and-llms.html">previous post</a>. A great resource if you’d like to learn even more about cases of technical solutions that end up being even more biased than humans is <a href="https://us.macmillan.com/books/9781250074317/automatinginequality">Automating Inequality</a> by Virginia Eubanks.</p>
+
+<h3 id="bias-in-machine-learning">Bias in Machine Learning</h3>
+
+<p>Another useful definition of the word bias is as adapted in the field of Machine Learning (ML), where “bias error” is used to talk about erroneous assumptions in the learning algorithm that lead to underfitting or overfitting the data. When a model is said to have high bias, it makes very broad generalizations and underfits the data. When a model has low bias, it treats every variable as an important signal to handle high variance and thereby overfits the data, which means it will not generalize to new unseen data well.</p>
+
+<figure style="width:80%;margin-left:auto;margin-right:auto">
+
+    
+    <img src="/assets/images/blog/2022-09-15-bias-its-complicated/teakettle_bias_under_overfit.png" alt="Illustrations of 3 systems - one with underfitting (high bias), where the decision boundary is simplistic and makes biased judgements; one with overfitting (high variance) where the decision boundary is overly complex to account for every possible data point, but would not generalize well; and one which is a good optimal fit." />
+    
+    
+        <figcaption>Bias errors in machine learning: Underfitting, Optimal Fit and Overfitting.</figcaption>
+    
+    <small>
+    
+    
+    </small>
+</figure>
+
+<p>A standard ML technique is to find the balance point where the model fits the data closely enough to be highly accurate, but also stays generalizable to new data. Error curves are used to visualize bias and variance to help practitioners determine where that point is. If a model has a high bias problem, then it is overgeneralizing and may need more features to handle more complexity. If a model has a high variance problem, then it is overfitting the data and may need a larger or more diverse dataset to train on.</p>
+
+<h3 id="bias-in-large-language-models">Bias in Large Language Models</h3>
+
+<p>So, what do all of these various definitions of bias have to do with LLMs? Quite a lot! Since LLMs are, by their very nature, large machine learning models that are built on enormous datasets of human language, they really show all the kinds of bias we’ve been talking about.</p>
+
+<p>From a linguistics and sociology perspective, we can look at the power dynamics involved in how we build LLMs. <a href="https://linguistics.cornell.edu/news/linguist-links-language-social-change-words-matter">Sally McConnell-Ginet</a> talks about the concept of “semantic authority,” which is the idea that the context in which words or phrases are used, by whom, to whom, and where, has the effect of conferring power, prestige, and authority to different groups or institutions. In LLMs, we see that our choice of dataset sources and types of dialects we train on have the effect of advantaging some groups of people over others.</p>
+
+<p>Specifically, this often means that English (and <a href="https://en.wikipedia.org/wiki/General_American_English">General American English</a> in particular) dominates the training datasets that models are trained on. Think about what that means for access to LLM applications for anyone who speaks a different dialect, much less for anyone who doesn’t speak English well or at all. For example, a study by <a href="https://doi.org/10.48550/arXiv.1707.00061">Blodgett and O’Conner (2017)</a> found that language models mistakenly identify tweets written in <a href="https://en.wikipedia.org/wiki/African-American_English">African-American English</a> as <em>not</em> being English at a higher rate than they misidentify tweets written in other dialects. Applications like voice assistants may struggle with different accents, or text autocorrection systems may try to correct names or phrases that belong to certain groups, making the experience of using those applications frustrating to anyone not centered in these datasets.</p>
+
+<p>Speaking of what kind of data we use to train models brings in the idea of statistical bias that we discussed above. If we want to have models that work for all users (rather than just a privileged group of users), then the data needs to be representative of all those users. Otherwise, we run into systemic bias in the dataset. This dataset bias is often compounded by algorithmic bias where LLMs are designed based on the goals, priorities, and understandings of the research and engineering teams that worked on them. This can lead to problems if those teams aren’t aware of the needs and experiences of different groups of people, and they may not even see a model’s poor performance if they haven’t thought to include examples across different groups in their test dataset.</p>
+
+<p>Even when we recognize that our models are performing poorly or recognize bias error in an LLM, the instinct is often to just build a bigger model or throw more data at it. While this can help with model bias in the error curve sense, it doesn’t necessarily address the issue of bias when it comes to who is represented in the data or served by the application, in addition to bringing along with it some ethical issues in terms of the resources required to train huge models that may not work well for everyone (see <a href="https://doi.org/10.1145/3442188.3445922">Bender, Gebru, et al. (2021)</a> and <a href="https://doi.org/10.48550/arXiv.2104.10350">Patterson et al. (2021)</a>).</p>
+
+<p>Thinking of bias as a complex term that encompasses both social and technical issues can help frame the way we see the problem as well as the ways we try to solve it. It can also help to understand what the real-world impact of biased models is and why those harms are things we want to actively avoid, which we’ll discuss in the next article in this series.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><a href="/blog/2022/09/01/ethics-and-llms.html"> &lt; Prev : Ethics and Large Language Models</a></td>
+    </tr>
+  </tbody>
+</table>
+
+
+  </div>
+
+  <a class="u-url" href="/blog/2022/09/15/bias-its-complicated.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Teakettle Labs</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name"></li><li><a class="u-email" href="mailto:info@teakettlelabs.com">info@teakettlelabs.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3" style="text-align:right;">
+        <ul class="related-links" style="list-style:none;">
+          <li><a href=/about>About Us</a></li>
+          <li><a href=/privacy>Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>

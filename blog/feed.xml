@@ -5,9 +5,76 @@
     <description>Teakettle Labs - Making NLP development more equitable and inclusive by raising awareness of bias and enabling actionable change.</description>
     <link>https://teakettlelabs.com/</link>
     <atom:link href="https://teakettlelabs.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Thu, 01 Sep 2022 09:30:26 -0700</pubDate>
-    <lastBuildDate>Thu, 01 Sep 2022 09:30:26 -0700</lastBuildDate>
+    <pubDate>Thu, 15 Sep 2022 11:25:15 -0700</pubDate>
+    <lastBuildDate>Thu, 15 Sep 2022 11:25:15 -0700</lastBuildDate>
     <generator>Jekyll v3.9.2</generator>
+    
+      <item>
+        <title>Bias - It&apos;s Complicated</title>
+        <description>&lt;p&gt;While “bias” is a term you’re doubtless familiar with, it may mean something rather different to you than it does to others depending on your background and priorities. It’s helpful to take a brief look at what exactly bias is before delving into the details of how it affects LLMs.&lt;/p&gt;
+
+&lt;h3 id=&quot;etymology-of-bias&quot;&gt;Etymology of Bias&lt;/h3&gt;
+
+&lt;p&gt;We can date the history of the word bias in English back &lt;a href=&quot;https://www.etymonline.com/word/bias&quot;&gt;to the 16th century&lt;/a&gt; when it was borrowed from French and meant simply an “oblique or diagonal line,” but soon was used in a figurative sense to mean a “one-sided tendency of mind.” The extension of the word bias to social issues has been prevalent since the late 19th century, such as by sociologist &lt;a href=&quot;https://en.wikipedia.org/wiki/Herbert_Spencer&quot;&gt;Herbert Spencer&lt;/a&gt; who used bias to question “objective neutrals” in points-of-view. In modern social sciences, influenced by feminism, racial justice, and viewpoints challenging colonialism, bias is used to talk about power dynamics and how systems can be biased against individuals and groups.&lt;/p&gt;
+
+&lt;h3 id=&quot;statistical-bias&quot;&gt;Statistical Bias&lt;/h3&gt;
+
+&lt;p&gt;Although the field of statistics dates back to the Islamic Golden Age (over a millennium ago), modern statistics that focuses on regression, correlation, etc., dates to the late 19th century. In this field, an error was defined as the difference between a prediction and an observation, and errors were classified as random (noise) or systematic (bias). Bias, in this sense, said that the predictions were wrong because we didn’t collect representative data, or weren’t able to collect some important variable due to technological (e.g. inaccurate instruments) or human (e.g. censoring) limitations.&lt;/p&gt;
+
+&lt;h3 id=&quot;algorithmic-bias&quot;&gt;Algorithmic Bias&lt;/h3&gt;
+
+&lt;p&gt;In computer science, one of the early examinations of “algorithmic bias” was by &lt;a href=&quot;https://en.wikipedia.org/wiki/Computer_Power_and_Human_Reason&quot;&gt;Joseph Weizenbaum&lt;/a&gt; (the original developer of the &lt;a href=&quot;https://en.wikipedia.org/wiki/ELIZA&quot;&gt;ELIZA&lt;/a&gt; system), who suggested in 1976 that bias could arise from both the data used in a program as well as the way a program is coded. He made the case that programs are a sequence of rules created by humans for a computer to follow. By following these rules consistently, such programs “embody law” and encode the programmer’s imagination of how the world works, including their biases, assumptions and expectations. He noted that any data fed into a machine additionally reflects “human decision-making processes” as the data being used was selected by humans. Although it’s tempting to view algorithmic approaches as neutral, this framework helps us see how algorithms end up locking in the bias of the people who designed them, while also lacking any form of human value-based judgment to evaluate results.&lt;/p&gt;
+
+&lt;p&gt;An early example of what he warned about was seen soon after in an instance of algorithmic bias that resulted in 60 women and ethnic minorities being &lt;a href=&quot;https://doi.org/10.1136/bmj.296.6623.657&quot;&gt;denied entry&lt;/a&gt; to St. George’s Hospital Medical School each year from 1982 to 1986, based on implementation of a new computer-guidance assessment system that denied entry to women and men with “foreign-sounding names” based on historical trends in admissions. And these problems still persist in modern-day algorithms, such as when Amazon had to scrap a resume-scanning tool it was developing after finding out that it had &lt;a href=&quot;https://www.reuters.com/article/us-amazon-com-jobs-automation-insight/amazon-scraps-secret-ai-recruiting-tool-that-showed-bias-against-women-idUSKCN1MK08G&quot;&gt;learned to be sexist&lt;/a&gt;, as we discussed in our &lt;a href=&quot;/blog/2022/09/01/ethics-and-llms.html&quot;&gt;previous post&lt;/a&gt;. A great resource if you’d like to learn even more about cases of technical solutions that end up being even more biased than humans is &lt;a href=&quot;https://us.macmillan.com/books/9781250074317/automatinginequality&quot;&gt;Automating Inequality&lt;/a&gt; by Virginia Eubanks.&lt;/p&gt;
+
+&lt;h3 id=&quot;bias-in-machine-learning&quot;&gt;Bias in Machine Learning&lt;/h3&gt;
+
+&lt;p&gt;Another useful definition of the word bias is as adapted in the field of Machine Learning (ML), where “bias error” is used to talk about erroneous assumptions in the learning algorithm that lead to underfitting or overfitting the data. When a model is said to have high bias, it makes very broad generalizations and underfits the data. When a model has low bias, it treats every variable as an important signal to handle high variance and thereby overfits the data, which means it will not generalize to new unseen data well.&lt;/p&gt;
+
+&lt;figure style=&quot;width:80%;margin-left:auto;margin-right:auto&quot;&gt;
+
+    
+    &lt;img src=&quot;/assets/images/blog/2022-09-15-bias-its-complicated/teakettle_bias_under_overfit.png&quot; alt=&quot;Illustrations of 3 systems - one with underfitting (high bias), where the decision boundary is simplistic and makes biased judgements; one with overfitting (high variance) where the decision boundary is overly complex to account for every possible data point, but would not generalize well; and one which is a good optimal fit.&quot; /&gt;
+    
+    
+        &lt;figcaption&gt;Bias errors in machine learning: Underfitting, Optimal Fit and Overfitting.&lt;/figcaption&gt;
+    
+    &lt;small&gt;
+    
+    
+    &lt;/small&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;A standard ML technique is to find the balance point where the model fits the data closely enough to be highly accurate, but also stays generalizable to new data. Error curves are used to visualize bias and variance to help practitioners determine where that point is. If a model has a high bias problem, then it is overgeneralizing and may need more features to handle more complexity. If a model has a high variance problem, then it is overfitting the data and may need a larger or more diverse dataset to train on.&lt;/p&gt;
+
+&lt;h3 id=&quot;bias-in-large-language-models&quot;&gt;Bias in Large Language Models&lt;/h3&gt;
+
+&lt;p&gt;So, what do all of these various definitions of bias have to do with LLMs? Quite a lot! Since LLMs are, by their very nature, large machine learning models that are built on enormous datasets of human language, they really show all the kinds of bias we’ve been talking about.&lt;/p&gt;
+
+&lt;p&gt;From a linguistics and sociology perspective, we can look at the power dynamics involved in how we build LLMs. &lt;a href=&quot;https://linguistics.cornell.edu/news/linguist-links-language-social-change-words-matter&quot;&gt;Sally McConnell-Ginet&lt;/a&gt; talks about the concept of “semantic authority,” which is the idea that the context in which words or phrases are used, by whom, to whom, and where, has the effect of conferring power, prestige, and authority to different groups or institutions. In LLMs, we see that our choice of dataset sources and types of dialects we train on have the effect of advantaging some groups of people over others.&lt;/p&gt;
+
+&lt;p&gt;Specifically, this often means that English (and &lt;a href=&quot;https://en.wikipedia.org/wiki/General_American_English&quot;&gt;General American English&lt;/a&gt; in particular) dominates the training datasets that models are trained on. Think about what that means for access to LLM applications for anyone who speaks a different dialect, much less for anyone who doesn’t speak English well or at all. For example, a study by &lt;a href=&quot;https://doi.org/10.48550/arXiv.1707.00061&quot;&gt;Blodgett and O’Conner (2017)&lt;/a&gt; found that language models mistakenly identify tweets written in &lt;a href=&quot;https://en.wikipedia.org/wiki/African-American_English&quot;&gt;African-American English&lt;/a&gt; as &lt;em&gt;not&lt;/em&gt; being English at a higher rate than they misidentify tweets written in other dialects. Applications like voice assistants may struggle with different accents, or text autocorrection systems may try to correct names or phrases that belong to certain groups, making the experience of using those applications frustrating to anyone not centered in these datasets.&lt;/p&gt;
+
+&lt;p&gt;Speaking of what kind of data we use to train models brings in the idea of statistical bias that we discussed above. If we want to have models that work for all users (rather than just a privileged group of users), then the data needs to be representative of all those users. Otherwise, we run into systemic bias in the dataset. This dataset bias is often compounded by algorithmic bias where LLMs are designed based on the goals, priorities, and understandings of the research and engineering teams that worked on them. This can lead to problems if those teams aren’t aware of the needs and experiences of different groups of people, and they may not even see a model’s poor performance if they haven’t thought to include examples across different groups in their test dataset.&lt;/p&gt;
+
+&lt;p&gt;Even when we recognize that our models are performing poorly or recognize bias error in an LLM, the instinct is often to just build a bigger model or throw more data at it. While this can help with model bias in the error curve sense, it doesn’t necessarily address the issue of bias when it comes to who is represented in the data or served by the application, in addition to bringing along with it some ethical issues in terms of the resources required to train huge models that may not work well for everyone (see &lt;a href=&quot;https://doi.org/10.1145/3442188.3445922&quot;&gt;Bender, Gebru, et al. (2021)&lt;/a&gt; and &lt;a href=&quot;https://doi.org/10.48550/arXiv.2104.10350&quot;&gt;Patterson et al. (2021)&lt;/a&gt;).&lt;/p&gt;
+
+&lt;p&gt;Thinking of bias as a complex term that encompasses both social and technical issues can help frame the way we see the problem as well as the ways we try to solve it. It can also help to understand what the real-world impact of biased models is and why those harms are things we want to actively avoid, which we’ll discuss in the next article in this series.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/blog/2022/09/01/ethics-and-llms.html&quot;&gt; &amp;lt; Prev : Ethics and Large Language Models&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+</description>
+        <pubDate>Thu, 15 Sep 2022 00:00:00 -0700</pubDate>
+        <link>https://teakettlelabs.com/blog/2022/09/15/bias-its-complicated.html</link>
+        <guid isPermaLink="true">https://teakettlelabs.com/blog/2022/09/15/bias-its-complicated.html</guid>
+        
+      </item>
     
       <item>
         <title>Ethics and Large Language Models</title>
@@ -39,7 +106,7 @@
 
 &lt;p&gt;These are just a few high-profile examples of the way that LLM applications can cause harm, but there are many more subtle, unexpected, and undesired outcomes as well. In this series of articles, we’ll provide insight into some of the limitations and ethical issues of LLMs and what we can do about it, looking at the following topics:&lt;/p&gt;
 
-&lt;h3 id=&quot;bias&quot;&gt;Bias&lt;/h3&gt;
+&lt;h3 id=&quot;bias&quot;&gt;&lt;a href=&quot;/blog/2022/09/15/bias-its-complicated.html&quot;&gt;Bias&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;What exactly is bias? What does it mean for our data and our models?&lt;/p&gt;
 
 &lt;h3 id=&quot;concrete-harms&quot;&gt;Concrete Harms&lt;/h3&gt;
@@ -55,6 +122,14 @@
 &lt;p&gt;How should we approach designing and using LLMs? What are some good practices to follow?&lt;/p&gt;
 
 &lt;p&gt;We’re hoping that through this discussion we can help LLM application engineers and designers avoid a few of the pitfalls that come with such complex sociotechnical systems and create the best experience possible for users.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/blog/2022/09/15/bias-its-complicated.html&quot;&gt;Next : Bias - It’s Complicated &amp;gt;&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
 
 </description>
         <pubDate>Thu, 01 Sep 2022 00:00:00 -0700</pubDate>
