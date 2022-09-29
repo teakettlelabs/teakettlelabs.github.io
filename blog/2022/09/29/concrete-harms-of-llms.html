@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <title>Teakettle Labs</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image">
+<meta name="og:locale" content="en_US">
+<meta name="og:site_name" content="Teakettle Labs"><meta name="og:title" content="Concrete Harms of Large Language Models">
+<meta name="twitter:title" content="Concrete Harms of Large Language Models"><meta name="og:type" content="article"><meta name="og:image" content="https://teakettlelabs.com/assets/images/blog/2022-09-29-concrete-harms-of-llms/teakettle_harms_title_5.png">
+<meta name="twitter:image" content="https://teakettlelabs.com/assets/images/blog/2022-09-29-concrete-harms-of-llms/teakettle_harms_title_5.png"><meta name="og:url" content="https://teakettlelabs.com/blog/2022/09/29/concrete-harms-of-llms.html">
+<meta name="twitter:url" content="https://teakettlelabs.com/blog/2022/09/29/concrete-harms-of-llms.html"><meta name="description" content="When Large Language Models are biased, they can cause real-world harm. Here we take a look at some of the types of harm that exist and how they can manifest.">
+<meta name="og:description" content="When Large Language Models are biased, they can cause real-world harm. Here we take a look at some of the types of harm that exist and how they can manifest.">
+<meta name="twitter:description" content="When Large Language Models are biased, they can cause real-world harm. Here we take a look at some of the types of harm that exist and how they can manifest.">
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/rsq_logo_32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/rsq_logo_16.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/rsq_logo_96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/rsq_logo_192.png">
+  <link rel="icon" type="image/png" sizes="400x400" href="/assets/images/rsq_logo_400.png">
+  <link rel="alternate" type="application/rss+xml" href="https://teakettlelabs.com/blog/feed.xml"><script defer data-domain="teakettlelabs.com" src="https://plausible.io/js/plausible.js"></script></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">
+      <img src="/assets/images/logo_w_text_horizontal.png" alt="Teakettle Labs" height="40px">
+    </a>
+
+    <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About Us</a><a class="page-link" href="/blog/">Blog</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h2 class="post-title p-name" itemprop="name headline">Concrete Harms of Large Language Models</h2>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2022-09-29T00:00:00-07:00" itemprop="datePublished">Sep 29, 2022
+      </time>
+      
+
+(10 minute read)
+
+•
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">
+            Shannon Ladymon
+          </span></span>•
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">
+            Sushanth Sowmyan
+          </span></span></p><p>
+        <img src="/assets/images/blog/2022-09-29-concrete-harms-of-llms/teakettle_harms_title_5.png" alt="Concrete Harms of Large Language Models" style="width:100%;margin-left:auto;margin-right:auto" />
+      </p></header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>In our <a href="/blog/2022/09/15/bias-its-complicated.html">previous blog post</a>, we discussed how bias can be multi-faceted, and its relevance to Large Language Models (LLMs). Now we’d like to look at what happens when we do end up with biased models in applications, and in particular, what kind of real-world effects they can have.</p>
+
+<p>It’s only in the past six or seven years, as models have grown increasingly powerful, that the AI community has started looking seriously into ethical considerations. A lot of the original focus was on issues of classification, specifically those with implications in financial or judicial domains (mortgages, predictive policing, etc.), but has since grown much more widespread across all of AI.</p>
+
+<p>An excellent starting point to look at these problems comes from Kate Crawford’s keynote address, <a href="https://www.youtube.com/watch?v=fMym_BKWQzk">The Trouble With Bias</a> in <a href="https://neurips.cc/Conferences/2017">NeurIPS 2017</a>, as it looks at ethics and harms concerns in the broader field of AI. The talk uses a notion of representational and allocative harms, which is a great framework for analyzing any concrete harm we might be propagating. Within Natural Language Processing (NLP), we can take a look at what kinds of harm LLM applications can cause.</p>
+
+<figure style="width:80%;margin-left:auto;margin-right:auto">
+
+    
+    <img src="/assets/images/blog/2022-09-29-concrete-harms-of-llms/kate_crawford_bias_papers.png" alt="Graph showing number of papers being published about ML in fairness undergoing exponential increase" />
+    
+    
+        <figcaption>Slide from 'The Trouble with Bias' by Kate Crawford in NeurIPS 2017</figcaption>
+    
+    <small>
+    
+    
+        (Image used per <a href="https://en.wikipedia.org/wiki/Fair_use#U.S._fair_use_factors">U.S. Copyright Fair Use: Commentary</a>)
+    
+    </small>
+</figure>
+
+<h3 id="representational-harm">Representational Harm</h3>
+
+<p>Representational harm is a type of harm done to a group when a model learns to mischaracterize them. It is frequently associated with data issues that reflect long-term systemic issues. These harms tend to be difficult to measure as they’re often deeply embedded in society. This can manifest in a few different ways in practice, from stereotype harm to denigration to erasure. We’ll go over what each of these look like and discuss a few examples.</p>
+
+<h4 id="stereotype-harm">Stereotype Harm</h4>
+
+<p>Microaggressions and <a href="https://doi.org/10.1371/journal.pone.0146487">stereotype threat</a> have been a topic of significant research as furthering systemic harm, where groups of people are constantly reminded that they are “not the normal” or “inferior.” This is causally linked to underperformance and low-grade background cognitive load and stress. For example, <a href="https://doi.org/10.1111/j.1559-1816.2008.00362.x">Danaher and Crandall (2008)</a> showed that simply having women fill out demographic data about gender (which brings up stereotypes of women being worse at math in their minds) before taking an Advanced Placement (AP) Calculus exam resulted in lower scores than having them fill it out afterwards.</p>
+
+<p>In LLMs, we see stereotypes constantly as models learn to associate certain words with other words, regardless of how accurate that stereotyping is. For example, <a href="https://doi.org/10.48550/arXiv.1809.02208">Prates, Avelar, and Lamb (2019)</a> found that Google Translate would default to “he” when translating sentences like <code class="language-plaintext highlighter-rouge">"____ is an engineer"</code> from 12 different gender-neutral languages (where pronouns don’t have gender). They found this effect especially pronounced in male-dominated fields like STEM, with the machine translation system choosing “he” much more frequently than would be expected even if it were based on gender distribution in STEM fields. <a href="https://support.google.com/translate/answer/9179237?hl=en">Google has worked to improve their system</a> which now explicitly provides translation options with both “he” and “she” although this still falls into the gender binary and doesn’t provide options for “they” etc. When systems have these sorts of biases, users can face stereotype harm if they are constantly reminded that their experience isn’t the norm. It can feel like even systems intended to be fair don’t see them as valid.</p>
+
+<h4 id="denigration">Denigration</h4>
+
+<p>Denigration can be a stronger version of stereotype harm, where it moves out of the “micro”-aggression territory and starts applying harmful associations learned about certain groups.</p>
+
+<p>A salient example is the large amount of abuse piled on queer or disabled folk that make LLMs learn to associate a negative sentiment with words like <em>gay</em> or <em>blind</em>. <a href="http://dx.doi.org/10.18653/v1/2020.findings-emnlp.301">RealToxicityPrompts: Evaluating Neural Toxic Degeneration in Language Models</a> (Gehman et al., 2020) explores these and shows how these denigrations make their way to commercial products such as the Perspective API, which companies then use to determine instances of hate speech and toxic comments to auto-moderate on. This leads to abuse-detection mechanisms banning the very people that were the victims of the hate-speech or abuse in the first place.</p>
+
+<p>Another example comes from <a href="https://doi.org/10.48550/arXiv.2101.05783">Abid, Farooqi, and Zou (2021)</a>, who prompted GPT-3 (an LLM) with the sentence <code class="language-plaintext highlighter-rouge">"Two Muslims walk into a ____."</code> In this case, 66% of the results included violence versus only 20% when <em>Christians</em> was used instead of <em>Muslims</em>, among many other similar issues. Especially when LLMs like GPT-3 are used in downstream tasks, this kind of denigration can lead to a lot of unexpected harm for users. Just imagine chatting with a friend about an innocuous topic and having a text messaging system unexpectedly suggest a sentence ending that was offensive to you.</p>
+
+<h4 id="erasure">Erasure</h4>
+
+<figure style="width:80%;margin-left:auto;margin-right:auto">
+
+    
+    <img src="/assets/images/blog/2022-09-29-concrete-harms-of-llms/teakettle_harms_sheep.png" alt="Illustration showing a group of sheep on a hill, most of which are white sheep, but with one black sheep much larger than all the others." />
+    
+    
+        <figcaption>The Black Sheep Problem</figcaption>
+    
+    <small>
+    
+    
+    </small>
+</figure>
+
+<p>Erasure is when lack of information about some demographics causes poor performance of models in the margin. Any information about a group that does not have much representation in the data is given an outsized relevance and leads to further stereotyping or denigration. A good example of the way this works in LLMs is the <a href="https://nlpers.blogspot.com/2016/06/language-bias-and-black-sheep.html">“black sheep problem,”</a> where references to “black sheep” outnumber references to “white sheep” in English 25:1, despite that not being at all the case for real-world distribution of black and white sheep. Because the color of sheep isn’t widely discussed in many texts, and when it does appear it is so heavily biased towards “black sheep,” models will heavily favor that stereotype regardless of its accuracy. This effect becomes even more extreme the less common something is in the data, so particularly marginalized groups will find that the model either erases them entirely or relies on stereotypes which may be denigrating, such as we’ve seen above.</p>
+
+<h3 id="allocative-harm">Allocative Harm</h3>
+
+<p>Allocative harm is a type of harm done to a group due to unfair resource allocation. This is frequently associated with direct actions that can be observed and measured. This increased visibility makes allocative harms easier to spot than representative harms, which can often be overlooked when optimizing on performance for the majority. Most representative harms can quickly escalate to allocative harms under certain circumstances, a few of which we’ll explore here.</p>
+
+<h4 id="feedback-systems">Feedback Systems</h4>
+
+<figure style="float:right;width:22%;margin: 3%">
+
+    
+    <img src="/assets/images/blog/2022-09-29-concrete-harms-of-llms/teakettle_harms_snowball.png" alt="Illustration showing a snowball rolling down a hill, making it get bigger." />
+    
+    
+        <figcaption>Feedback systems have a snowballing effect.</figcaption>
+    
+    <small>
+    
+    
+    </small>
+</figure>
+
+<p>Feedback effects happen when biased models are used as predictors that affect the real world. When these predictions are put into action and make changes to the source that the data is generated on, and then new data is gathered and fed back into the system, it can snowball very quickly. Most deployed non-toy models are prone to this effect and can cause problems if they are used to determine resource allocation.</p>
+
+<p>For example, <a href="https://cacm.acm.org/magazines/2013/5/163753-discrimination-in-online-ad-delivery/fulltext">Latanya Sweeny (2013)</a> found that online ad delivery showed racial bias where searching for Black-identifying names more frequently showed ads for arrest records compared to white-identifying names, even though this was unintended by both the sellers and the ad purchasing companies. Instead, the automated algorithms responded to user click-rates for arrest ads (showing racial bias in society) by providing even more arrest ads for Black-identifying names, which then of course provided even more opportunities for clicks, which then were fed back into the algorithm, and so forth. Given how name searches can be used by companies when deciding to hire someone, this can result in very different opportunities and resources for those affected.</p>
+
+<h4 id="scaling-systems">Scaling Systems</h4>
+
+<p>In order to scale systems, it often makes sense to automate as much as possible. However, when humans are not in the loop and there is no recourse available to users who experience problems, this can automate inequality. Just consider a simple example of a voice system for a bank or credit card that struggles to understand a user with an accent it isn’t trained on. The user may struggle to have the system recognize the commands they use, may have to repeat themselves multiple times, and if there is no option to speak to a human representative, may be completely unsuccessful in getting their task accomplished. When the stakes are high, such as with banking and credit cards, frequently there <em>is</em> a human-in-the-loop option, but as more organizations lean on automated LLM systems, many may decide that it doesn’t scale to provide human-in-the-loop options and thereby cause resource allocation harms while being completely unaware of it.</p>
+
+<h4 id="complex-systems">Complex Systems</h4>
+
+<p>Although some industries, such as lending and housing, are prohibited from using black box systems because they are required to show compliance with nondiscrimination laws, most organizations that use machine learning systems have no requirement to justify any output or decisions made based on algorithms. Since LLMs are generally based on complex architecture like Transformer models, the reasoning behind their output is generally opaque to human eyes. Some techniques for explainable AI, such as <a href="https://shap.readthedocs.io/en/latest/example_notebooks/overviews/An%20introduction%20to%20explainable%20AI%20with%20Shapley%20values.html">Shapley values</a>, can provide local interpretability and explain the importance of different features to a prediction, but bigger issues such as feedback and scaling effects are missed. Without careful consideration and examination of both the LLM models and their effects in the real world, it’s easy to take complex systems at face value and overlook the allocative harms they may be causing.</p>
+
+<p>Now that we’ve explored some of the harms that biased LLMs can cause, we’ll take a look in our next post at how these models work, how much they actually understand, and how they are used in ways that can cause problems if we don’t think carefully about their impact.</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><a href="/blog/2022/09/15/bias-its-complicated.html">&lt; Prev : Bias - It’s Complicated</a></td>
+    </tr>
+  </tbody>
+</table>
+
+
+  </div>
+
+  <a class="u-url" href="/blog/2022/09/29/concrete-harms-of-llms.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Teakettle Labs</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name"></li><li><a class="u-email" href="mailto:info@teakettlelabs.com">info@teakettlelabs.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3" style="text-align:right;">
+        <ul class="related-links" style="list-style:none;">
+          <li><a href=/about>About Us</a></li>
+          <li><a href=/privacy>Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
