@@ -5,9 +5,182 @@
     <description>Teakettle Labs - Making NLP development more equitable and inclusive by raising awareness of bias and enabling actionable change.</description>
     <link>https://teakettlelabs.com/</link>
     <atom:link href="https://teakettlelabs.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Wed, 12 Oct 2022 22:54:32 -0700</pubDate>
-    <lastBuildDate>Wed, 12 Oct 2022 22:54:32 -0700</lastBuildDate>
+    <pubDate>Thu, 27 Oct 2022 11:07:19 -0700</pubDate>
+    <lastBuildDate>Thu, 27 Oct 2022 11:07:19 -0700</lastBuildDate>
     <generator>Jekyll v3.9.2</generator>
+    
+      <item>
+        <title>Bias in Large Datasets and Models</title>
+        <description>&lt;p&gt;One of the biggest wins of the last decade is the realization that bigger models with more parameters, such as Large Language Models (LLMs), are able to encode more complex outcomes. But more parameters need more training, and need a sufficiently increased amount of data to train on, which can be hard to come by. Often, the solution is to use easily available sources of text such as scraping the internet, and as you can imagine, the quality of that data isn’t always the best and frequently includes systemic bias (see our &lt;a href=&quot;/blog/2022/09/29/concrete-harms-of-llms.html&quot;&gt;earlier post&lt;/a&gt; in this series about bias for more detail). In this article we’ll talk about the issues with bias in large datasets as well as some of the current approaches for dealing with that bias in both the data as well as the model.&lt;/p&gt;
+
+&lt;h3 id=&quot;issues-with-large-datasets&quot;&gt;Issues with Large Datasets&lt;/h3&gt;
+
+&lt;p&gt;So, let’s talk about what issues can pop up when you’re training a model on some large data that isn’t carefully curated. We’ll discuss just a few of the issues you might see with these easily available datasets.&lt;/p&gt;
+
+&lt;h4 id=&quot;diversity-of-data&quot;&gt;Diversity of Data&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;We don’t simply need more data, we need more diverse data.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Training data needs to be from a variety of sources, not just a &lt;em&gt;lot&lt;/em&gt; of a single source. Even if many people are contributing to Reddit, Twitter, or Wikipedia, they will tend to have a lot of commonalities in how they interact in those communities. That is not a reflection of language in and of itself that should be encoded into the model. And if there is a skew in the quantity of data available from some sources over others, it will show.&lt;/p&gt;
+
+&lt;p&gt;Imagine training a model on a majority of Twitter data and how that might affect it. Are short sentences filled with emojis and word shortenings really representative of the way language is used at large, or is that an artifact of the dataset? How about if we trained only on academic papers? Would that be representative? Would mixing these two sources balance it out? Even though these sources of data are readily accessible, that doesn’t mean it satisfies our need for a wide range of examples to form a comprehensive model.&lt;/p&gt;
+
+&lt;h4 id=&quot;systemic-inequalities&quot;&gt;Systemic Inequalities&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Easily available large data is affected by systemic inequalities.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Frequent sources of large data, such as newspaper archives, published books, internet forums, webtext, etc., are far from representative or neutral. Even when drawn from generally highly regulated sources such as newspapers or books, they are rife with passive inequalities, such as demographic skews in who generates these texts, what they choose to talk about, and how they choose to describe it.&lt;/p&gt;
+
+&lt;p&gt;As an example of a standard dataset exhibiting a passive skew, &lt;a href=&quot;https://doi.org/10.48550/arXiv.1804.09301&quot;&gt;Gender Bias in Coreference Resolution&lt;/a&gt; (Rudinger et al., 2018) found that while the U.S. Bureau of Labor Statistics has 36% of ‘physicians and surgeons’ as women, only 9.2% of ‘doctor’ references in the standard Bergsma&amp;amp;Lin (B&amp;amp;L) dataset used for occupation association learning were female. Similar under-representations hold for other professions such as for women managers (38.5% to 5.18%). And for cases where social acceptance is still in flux, such as with transgender or nonbinary folk, the standard datasets frequently simply omit or erase them.&lt;/p&gt;
+
+&lt;h4 id=&quot;active-prejudices&quot;&gt;Active Prejudices&lt;/h4&gt;
+
+&lt;p&gt;&lt;em&gt;Unless care is taken, active prejudices are also picked up, especially in unmoderated webtext.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Beyond passive skews and inequalities in datasets, there are often very active prejudices which are learned by models because they exist in the data. Humanity has a long history of societal prejudice and stereotypes that are expressed frequently in language. If you’ve ever read a classic novel or watched an old movie and been a little shocked when they use some outdated or offensive term, you’ll be familiar with this. &lt;a href=&quot;https://doi.org/10.48550/arXiv.1711.08412&quot;&gt;Garg et al. (2018)&lt;/a&gt; had a study which trained word embeddings based on published books and newspaper reports over the decades from 1900 onward that showed how ethnic and sexist stereotypes changed form over time based on the change in training data. And this is not just a historical problem! Stereotypes and prejudices are very much present in modern data as well. We all know to avoid comment sections on some websites for exactly such reasons, or avoid certain websites entirely for their toxicity. A broad webtext scrape will include all of that content for a model to learn as if it were intentional patterns, and then go on to produce them in its own output if not carefully curated.&lt;/p&gt;
+
+&lt;h3 id=&quot;typical-strategies-for-dataset-skew&quot;&gt;Typical Strategies for Dataset Skew&lt;/h3&gt;
+
+&lt;p&gt;When we know we are dealing with biases injected from a dataset, a number of technical solutions seem like the logical next step. Let’s look at a number of possible such strategies that are commonly used.&lt;/p&gt;
+
+&lt;h4 id=&quot;doing-nothing-at-all&quot;&gt;Doing Nothing at All&lt;/h4&gt;
+
+&lt;p&gt;This is an attractive strategy for businesses to adopt, even after they are aware of bias in the dataset, because typical 80-20 thinking says that if something works well for 80% of the users while not working for 20%, that’s similar to the many, many other 80-20 business decisions companies make in order to operate. This framing even makes sense when seen purely from a resources perspective, but it has the downside of frequently being short-term thinking.&lt;/p&gt;
+
+&lt;p&gt;One analogy people use when describing companies that are fine with not satisfying all users is that of a forest that’s growing, where you may lose some old trees (customers) at the center, but as long as the outside edge of the forest is growing, you’ll outpace the losses. This strategy works only so long as you have an infinite growth area to expand into, you never hit hiccups that prevent you from continuing to grow, and the spread of destruction at the center does not speed up. When seen from this angle, it is clear that while short-term strategies could be adopted in some circumstances, they must be seen as debt and paid down as soon as possible, and at the very least, it should still be evaluated to figure out if you can afford to take on that debt.&lt;/p&gt;
+
+&lt;p&gt;Jennifer Eberhardt, in her book &lt;a href=&quot;https://www.penguinrandomhouse.com/books/557462/biased-by-jennifer-l-eberhardt-phd/&quot;&gt;Biased: Uncovering the Hidden Prejudice That Shapes What We See, Think, and Do&lt;/a&gt;, makes the point that too often people hesitate to deal with bias because it’s unclear what the best practices are. She points out, however, that since this is an emerging field and there is a lack of generalizability of bias, unless you start moving with an intent to change, you never will because you will not collect the data and evidence that allows you to iterate on. So, the problem is not that we’re moving too quickly, but that we’re too slow to move.&lt;/p&gt;
+
+&lt;h4 id=&quot;undersampling-over-represented-data&quot;&gt;Undersampling Over-Represented Data&lt;/h4&gt;
+
+&lt;p&gt;This is a sensible starting point and where many people begin. We want to make sure that if some type of data is overrepresented in the training set, we can use sampling techniques to whittle away at some of that overrepresentation. This makes sure that we’re not training the model with a reinforcement of the frequency as a relevant signal.&lt;/p&gt;
+
+&lt;p&gt;Care must be taken, however, that the target we’re undersampling is indeed over-represented data. In particular, we’re concerned here about notions of intersectionality, where there may be various subgroups hidden within the data that could be heavily impacted if their data is reduced in the training set. Imagine, for example, that you decided you had plenty of examples of American English and undersampled all the data from the U.S., and thereby unknowingly reduced the amount of data the model has to train on a dialect like African American English, which systems already struggle with because it’s not as common in the dataset.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://doi.org/10.48550/arXiv.2101.01673&quot;&gt;Characterizing Intersectional Group Fairness with Worst-Case Comparisons&lt;/a&gt; (Ghosh et al., 2021) has a good overview of this problem, and argues for fairness criteria that consider the comparison of the best-served demographic subgroup and the worst-served subgroup, rather than measuring fairness for each broader group or dimension. Similar such principles should be followed with regards to sampling mechanisms as well.&lt;/p&gt;
+
+&lt;h4 id=&quot;oversampling-under-represented-data&quot;&gt;Oversampling Under-Represented Data&lt;/h4&gt;
+
+&lt;p&gt;While undersampling over-represented data is not a problem (after accounting for intersectionality) in and of itself, oversampling under-represented data is not clearly a win. The reason for this is that it leads to erasure and stereotype effects.&lt;/p&gt;
+
+&lt;p&gt;For instance, if we have a dataset that has millions of examples describing Americans as tall, short, happy, sad, etc., but just one example talking about Norwegians as tall, the model is going to have very little to go on when we ask it to produce output about Norwegians. If we then oversample the data such that there are multiple examples of Norwegians but every single one of them is tall, it will reinforce that stereotype even more and give it an outsized association.&lt;/p&gt;
+
+&lt;h4 id=&quot;masking-of-protected-attributes&quot;&gt;Masking of Protected Attributes&lt;/h4&gt;
+
+&lt;p&gt;Masking is an interesting technique which replaces the presence of specific attributes with a generic token. This can be as simple as a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[MASK]&lt;/code&gt; token, or it can be based on categories like &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[PERSON]&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;[BUSINESS]&lt;/code&gt;, etc. Various named entity recognition (NER) models already incorporate such detections and categories to help us mask. That said, using this relies on our categorizer/attribute identifier working well enough, which is often not the case for any examples on the margins. You can end up with masking the common or typical words and completely missing the uncommon.&lt;/p&gt;
+
+&lt;p&gt;In addition, although masking may seem to remove biases for specific words by simply omitting them in the first place, associations may still be possible through what are known as proxy variables. Proxy variables are elements where even if the protected attribute in question is cleansed from the data, it winds up having associations with other words that commonly co-occur, and the end result is that during predictions the protected attribute and its stereotype association winds up being made anyway.&lt;/p&gt;
+
+&lt;p&gt;For example, imagine a dataset where you masked the word “Norwegian”, but had the following sentences:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Many [MASK] people live in Oslo.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Oslo is filled with tall people.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;It’s easy to see how “Oslo” here can be a proxy variable that will allow the model to make a connection despite the masking. This is a common problem with simply removing certain words or features from data because of the complex, interconnected nature of language and society.&lt;/p&gt;
+
+&lt;h4 id=&quot;augmentation-on-under-represented-data&quot;&gt;Augmentation on Under-Represented Data&lt;/h4&gt;
+
+&lt;p&gt;Augmentation is the mechanism of generating new data for underrepresented attributes that is a mirror of the over-represented data. These techniques prove to be fairly successful at achieving neutrality, if neutrality is the goal. Note that while these might be better at modeling language, they’re not necessarily appropriate for things like question-answering or information retrieval scenarios because its training will consist of “made up” facts.&lt;/p&gt;
+
+&lt;p&gt;Essentially, given a biased text example:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Americans are short. Americans are happy. Americans are sad.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Norwegians are tall.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Augmenting this text could produce something like:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Americans are short. Americans are happy. Americans are sad. Americans are tall.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Norwegians are tall. Norwegians are short. Norwegians are happy. Norwegians are sad.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Randomization is another possibility for augmentation, and when paired with sampling, can produce much better training text. Augmentation is used to produce what are considered counterfactuals for a number of adversarial techniques as well.&lt;/p&gt;
+
+&lt;p&gt;Augmentation does not suffer from the proxy-variables problem we saw with masking for protected variables because it effectively mirrors and generates new data that have similar associations. However, we still have one key problem that we had with masking - if we did not detect something as a protected variable, we would never know to augment it. This makes augmentation a specific, precise tool to “fix” bias in particular dimensions you know of, not a generic catch-all. Augmentation can also get expensive if used indiscriminately for a number of attributes.&lt;/p&gt;
+
+&lt;h4 id=&quot;collecting-better-or-more-representativediverse-data&quot;&gt;Collecting Better or More-Representative/Diverse Data&lt;/h4&gt;
+
+&lt;p&gt;Ultimately, all of these above techniques are trying to step around fixing biased data when the ideal solution would be to collect data that is more representative, more diverse, and reflects the kind of system whose values you want your model to follow. This tends to be expensive and difficult to gauge though, and until you get there, some of these techniques can prove useful.&lt;/p&gt;
+
+&lt;h3 id=&quot;typical-strategies-for-model-bias&quot;&gt;Typical Strategies for Model Bias&lt;/h3&gt;
+
+&lt;p&gt;In addition to methods that fix the data itself, there are also many methods to reduce bias in models once they’re trained. We’ll go over just a couple of these approaches relevant to LLMs here.&lt;/p&gt;
+
+&lt;h4 id=&quot;debiasing-on-protected-attributes&quot;&gt;Debiasing on Protected Attributes&lt;/h4&gt;
+
+&lt;p&gt;“Debiasing” techniques attempt to find and undo the effect of bias in a model after the model is already known to be biased. They have been applied to embedding models (and more recently to contextual models) to try to extract a vector space that represents a protected attribute (ex. gender) and nullify that dimension or separate it out to a couple of known axes so that you can make predictions that include or exclude those axes.&lt;/p&gt;
+
+&lt;p&gt;Although there has been some interesting work done in this area, language is such a complex system that this technique often has the same issue that masking does, where bias is still available to the model through other means. &lt;a href=&quot;https://doi.org/10.48550/arXiv.1903.03862&quot;&gt;Gonen and Goldberg (2021)&lt;/a&gt; found that often these approaches move bias around and hide their expression, but do not remove them, showing that while bias-by-prediction was minimized, bias-by-neighbor allows you to re-predict the biased predictions. In general (when possible), it is better to not train on biased data in the first place, compared to training followed by debiasing.&lt;/p&gt;
+
+&lt;h4 id=&quot;prompt-engineering&quot;&gt;Prompt Engineering&lt;/h4&gt;
+
+&lt;p&gt;Another approach to dealing with biased models is prompt engineering, which allows users to get the same model to respond in different ways to the same user input by framing it via prompts. This can be especially useful in large multi-task contextual language models.&lt;/p&gt;
+
+&lt;p&gt;For instance, the &lt;a href=&quot;https://beta.openai.com/docs/models/with-no-engineering-an-impolite-customer-is-met-with-vitriol&quot;&gt;OpenAI API documentation&lt;/a&gt; has this example of a customer input to a chatbot:&lt;/p&gt;
+
+&lt;figure style=&quot;width:80%;margin-left:auto;margin-right:auto&quot;&gt;
+
+    
+    &lt;img src=&quot;/assets/images/blog/2022-10-27-large-dataset-and-model-bias/teakettle_data_rude_chat.png&quot; alt=&quot;Chat conversation between an irate customer and a chatbot, without any prompt engineering work. Customer: &apos;I need my 🤬 internet. The technician is 2 hours late and I need a steady stream of cat gifs directly injected into my veins to stay alive.&apos; Chatbot: &apos;My manager let me go at my regular time because there are too many 🤬 like you that are demanding the 🤬 internets immediately and you don&apos;t have to tip me, this is last warning.&apos;&quot; /&gt;
+    
+    
+        &lt;figcaption&gt;A chatbot API responds to an irate customer, matching their form, if used without any prompt engineering work.&lt;/figcaption&gt;
+    
+    &lt;small&gt;
+    
+    
+    &lt;/small&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;This can happen because off-the-shelf generative models pick up on the style of the input and try to match it. If simply given a prompt of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Response:&lt;/code&gt;, the model may imitate the irate tone of the user, which can lead to cases like the one above.&lt;/p&gt;
+
+&lt;p&gt;On the other hand, after some fine-tuning with polite responses, it is possible to “condition” the response by prompting with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Polite Response:&lt;/code&gt;, which results in the following:&lt;/p&gt;
+
+&lt;figure style=&quot;width:80%;margin-left:auto;margin-right:auto&quot;&gt;
+
+    
+    &lt;img src=&quot;/assets/images/blog/2022-10-27-large-dataset-and-model-bias/teakettle_data_polite_chat.png&quot; alt=&quot;Chat conversation between an irate customer and a chatbot, with prompt engineering work. Customer: &apos;I need my 🤬 internet. The technician is 2 hours late and I need a steady stream of cat gifs directly injected into my veins to stay alive.&apos; Chatbot: &apos;I understand that internet is important to you. I&apos;ll have someone working on this in the next 24 hours.&apos;&quot; /&gt;
+    
+    
+        &lt;figcaption&gt;A chatbot API responds to an irate customer, with a polite response because it has been conditioned to respond in that manner.&lt;/figcaption&gt;
+    
+    &lt;small&gt;
+    
+    
+    &lt;/small&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;This is a much better style for the chatbot to use and shows how even a model trained on data that has some problems could be finetuned to have better output. It still requires knowing ahead of time what type of behavior we might need to suppress (and having non-toxic data in the first place is even better), but it is another technique that can prove useful for reducing issues in the model output.&lt;/p&gt;
+
+&lt;p&gt;In our next and final article in this series, we’ll talk about some additional good organizational practices you can implement beyond these technical ones to help reduce bias in your entire pipeline, addressing bias before it can be baked into your model.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/blog/2022/10/13/fluency-vs-understanding.html&quot;&gt;&amp;lt; Prev : Fluency vs Understanding&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+</description>
+        <pubDate>Thu, 27 Oct 2022 00:00:00 -0700</pubDate>
+        <link>https://teakettlelabs.com/blog/2022/10/27/bias-in-large-datasets-and-models.html</link>
+        <guid isPermaLink="true">https://teakettlelabs.com/blog/2022/10/27/bias-in-large-datasets-and-models.html</guid>
+        
+      </item>
     
       <item>
         <title>Fluency vs Understanding</title>
@@ -168,6 +341,7 @@ A: More than 1,050,000
   &lt;tbody&gt;
     &lt;tr&gt;
       &lt;td&gt;&lt;a href=&quot;/blog/2022/09/29/concrete-harms-of-llms.html&quot;&gt;&amp;lt; Prev : Concrete Harms of LLMs&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;/blog/2022/10/27/bias-in-large-datasets-and-models.html&quot;&gt;Next : Bias in Large Datasets and Models &amp;gt;&lt;/a&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
@@ -396,7 +570,7 @@ A: More than 1,050,000
 &lt;h3 id=&quot;fluency-vs-understanding&quot;&gt;&lt;a href=&quot;/blog/2022/10/13/fluency-vs-understanding.html&quot;&gt;Fluency vs Understanding&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;What is the difference between fluency and understanding? How much do LLMs actually understand, and why does that matter?&lt;/p&gt;
 
-&lt;h3 id=&quot;large-dataset-and-model-bias&quot;&gt;Large Dataset and Model Bias&lt;/h3&gt;
+&lt;h3 id=&quot;bias-in-large-datasets-and-models&quot;&gt;&lt;a href=&quot;/blog/2022/10/27/bias-in-large-datasets-and-models.html&quot;&gt;Bias in Large Datasets and Models&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Big data is key to LLMs, but how good is the data we’re training on? How can we work with data that has problems?&lt;/p&gt;
 
 &lt;h3 id=&quot;good-organizational-practices&quot;&gt;Good Organizational Practices&lt;/h3&gt;
