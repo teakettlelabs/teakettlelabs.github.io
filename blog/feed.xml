@@ -3,11 +3,55 @@
   <channel>
     <title>Teakettle Labs</title>
     <description>Teakettle Labs - Making NLP development more equitable and inclusive by raising awareness of bias and enabling actionable change.</description>
-    <link>https://teakettlelabs.com/</link>
-    <atom:link href="https://teakettlelabs.com/feed.xml" rel="self" type="application/rss+xml"/>
-    <pubDate>Fri, 28 Oct 2022 09:11:10 -0700</pubDate>
-    <lastBuildDate>Fri, 28 Oct 2022 09:11:10 -0700</lastBuildDate>
+    <link>https://www.teakettlelabs.com/</link>
+    <atom:link href="https://www.teakettlelabs.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 10 Nov 2022 15:01:55 -0800</pubDate>
+    <lastBuildDate>Thu, 10 Nov 2022 15:01:55 -0800</lastBuildDate>
     <generator>Jekyll v3.9.2</generator>
+    
+      <item>
+        <title>Good Organizational Practices for Reducing Bias</title>
+        <description>&lt;p&gt;In this &lt;a href=&quot;/blog/2022/09/01/ethics-and-llms.html&quot;&gt;series&lt;/a&gt; on the problem of bias in Large Language Models (LLMs), we’ve talked about what bias is, the types of harms it causes, and some technical solutions to reduce it in our data and models. In general, we want to be careful with what kind of data we’re training models on and ensure it’s as high-quality and fair as we can get since that affects everything downstream.&lt;/p&gt;
+
+&lt;p&gt;It’s also important for us to think about our pipelines and decisions as a whole and consider some of the larger organizational practices we can put into place to ensure that bias is reduced or caught early. These can be especially long-lasting and deeply impactful since bias in models is a systemic sociotechnical issue and can be mitigated on the social side even more effectively than on the technical side. In this final article in this series, we’ll discuss just a few of the organizational practices that can help you reduce bias in your models.&lt;/p&gt;
+
+&lt;h3 id=&quot;awareness&quot;&gt;Awareness&lt;/h3&gt;
+
+&lt;p&gt;The first step to addressing any problem is to be aware of it, the ways it can manifest, and to be on the lookout for it. We do not want to diminish the problem or dismiss it. We do want to adopt technical solutions where it makes sense to, but we need to know when they make sense. Reading up on bias in LLMs is a great start, as is talking about it with your team, looking at projects you’re working on to see where bias might be present, and continuing to learn more about the issue.&lt;/p&gt;
+
+&lt;p&gt;You can check out organizations that are focusing on ethical AI, such as &lt;a href=&quot;https://hai.stanford.edu/&quot;&gt;Stanford’s institute for Human-Centered Artificial Intelligence&lt;/a&gt;, or look at handbooks and resources on ethical AI, such as those made by &lt;a href=&quot;https://haas.berkeley.edu/equity/industry/playbooks/mitigating-bias-in-ai/&quot;&gt;Berkeley’s Haas Center for Equity, Gender, and Leadership&lt;/a&gt; and &lt;a href=&quot;https://www.scu.edu/ethics-in-technology-practice/&quot;&gt;SCU’s Markkula Center for Applied Ethics&lt;/a&gt;. You can also get more active and involved by attending a conference like &lt;a href=&quot;https://facctconference.org/index.html&quot;&gt;ACM’s Conference on Fairness, Accountability, and Transparency (ACM FAccT)&lt;/a&gt; and engaging with a community of other people interested in AI ethics.&lt;/p&gt;
+
+&lt;h3 id=&quot;diversity-in-teams&quot;&gt;Diversity in Teams&lt;/h3&gt;
+
+&lt;p&gt;Related to awareness is the problem that often, “&lt;em&gt;you don’t know what you don’t know.&lt;/em&gt;” The easiest way to spot a problem, especially related to bias or inequity, is to have had some experience with it in the past. When you’re already aware that a problem exists, it becomes easier to know when to look for it or how it might pop up. The more diverse set of experiences a team brings to the table, the better able they’ll be to spot problems and prevent them from entering the pipeline. Supporting diversity initiatives and outreach to improve the breadth of your team is a great idea, and it can also be helpful to reach out and build bridges to other groups who have those potential experiences that you lack. Bringing in as many experiences and perspectives as possible can help head problems off before they occur. This is crucial in teams across the board, be they developers, testers, product development or leadership. Prioritizing diversity also helps foster cultural humility which leads to longer term stability.&lt;/p&gt;
+
+&lt;h3 id=&quot;ethical-practices-throughout-the-pipeline&quot;&gt;Ethical Practices Throughout the Pipeline&lt;/h3&gt;
+
+&lt;p&gt;Since bias can enter the pipeline at any stage, it’s important to build ethical practices into every step, from design to production. Just as one wouldn’t (or at least shouldn’t!) release software without testing, one shouldn’t push out products without testing the effects of it. Ideologies of “failing-fast” don’t imply that one should “test-in-prod” - especially given the harms that biased models can cause for users. Ethics concerns belong from the ideation onward, not just tacked on at the end as an item in a checklist to be ticked off. Performance evaluation should consider ethical evaluation and action as well, not simply rewarding “getting things done”.&lt;/p&gt;
+
+&lt;p&gt;We should keep in mind that our goal is cultural change. Training everyone in how to think about bias and ethical design is key to awareness and prevention, and it can be helpful to have a few specialists that anyone can go to when they have questions. Ethics committees can be formed to provide a team that supports this, or ethics ambassadors/champions can act as a go-to person on every team. All of us want to design fair systems and sometimes just struggle to know what best practices to follow, so having resources like these can be a huge help.&lt;/p&gt;
+
+&lt;h3 id=&quot;practical-tools-for-ethical-design&quot;&gt;Practical Tools for Ethical Design&lt;/h3&gt;
+
+&lt;p&gt;In addition to making sure you’re thinking about bias and ethics throughout the process, having a few practical tools that can become standard usage in your team can be useful in promoting careful design. &lt;a href=&quot;http://aif360.mybluemix.net/&quot;&gt;IBM’s AI Fairness 360 Toolkit&lt;/a&gt; offers metrics to check for bias (as well as some algorithms to help mitigate it in models), which can be used in the same way you might use unit testing. &lt;a href=&quot;https://doi.org/10.48550/arXiv.1810.03993&quot;&gt;Model Cards&lt;/a&gt; and &lt;a href=&quot;https://doi.org/10.48550/arXiv.1803.09010&quot;&gt;Datasheets for Datasets&lt;/a&gt; are both methods of documentation that are gaining adoption in the industry as they help make design choices explicit and transparent. Especially since there are so many downstream applications of LLMs, documenting what exactly went into creating a dataset or training a model can be enormously helpful in recognizing where bias might creep in. They also are a great opportunity to reflect on the choices made when creating a dataset or model, which can help avoid pitfalls as well. Even making your own checklist (see the &lt;a href=&quot;https://www.brookings.edu/research/algorithmic-bias-detection-and-mitigation-best-practices-and-policies-to-reduce-consumer-harms/&quot;&gt;Brookings Institution’s design questions template&lt;/a&gt; for an example) for the processes that help your team think through the ethics of any projects you work on could be useful as it helps build a culture of valuing ethical design.&lt;/p&gt;
+
+&lt;p&gt;We hope that whatever you decide to try in your own circumstances, you’ll be more prepared to recognize and handle bias. And remember, “perfect is the enemy of good,” so focus on what you can do right now and keep improving as you go!&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;a href=&quot;/blog/2022/10/27/bias-in-large-datasets-and-models.html&quot;&gt;&amp;lt; Prev : Bias in Large Datasets and Models&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;/blog/2022/09/01/ethics-and-llms.html&quot;&gt; ^ Up : Ethics and Large Language Models&lt;/a&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+</description>
+        <pubDate>Thu, 10 Nov 2022 00:00:00 -0800</pubDate>
+        <link>https://www.teakettlelabs.com/blog/2022/11/10/org-practices-for-reducing-bias.html</link>
+        <guid isPermaLink="true">https://www.teakettlelabs.com/blog/2022/11/10/org-practices-for-reducing-bias.html</guid>
+        
+      </item>
     
       <item>
         <title>Bias in Large Datasets and Models</title>
@@ -171,14 +215,15 @@
   &lt;tbody&gt;
     &lt;tr&gt;
       &lt;td&gt;&lt;a href=&quot;/blog/2022/10/13/fluency-vs-understanding.html&quot;&gt;&amp;lt; Prev : Fluency vs Understanding&lt;/a&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;a href=&quot;/blog/2022/11/10/org-practices-for-reducing-bias.html&quot;&gt;Next : Good Organizational Practices for Reducing Bias &amp;gt;&lt;/a&gt;&lt;/td&gt;
     &lt;/tr&gt;
   &lt;/tbody&gt;
 &lt;/table&gt;
 
 </description>
         <pubDate>Thu, 27 Oct 2022 00:00:00 -0700</pubDate>
-        <link>https://teakettlelabs.com/blog/2022/10/27/bias-in-large-datasets-and-models.html</link>
-        <guid isPermaLink="true">https://teakettlelabs.com/blog/2022/10/27/bias-in-large-datasets-and-models.html</guid>
+        <link>https://www.teakettlelabs.com/blog/2022/10/27/bias-in-large-datasets-and-models.html</link>
+        <guid isPermaLink="true">https://www.teakettlelabs.com/blog/2022/10/27/bias-in-large-datasets-and-models.html</guid>
         
       </item>
     
@@ -348,8 +393,8 @@ A: More than 1,050,000
 
 </description>
         <pubDate>Thu, 13 Oct 2022 00:00:00 -0700</pubDate>
-        <link>https://teakettlelabs.com/blog/2022/10/13/fluency-vs-understanding.html</link>
-        <guid isPermaLink="true">https://teakettlelabs.com/blog/2022/10/13/fluency-vs-understanding.html</guid>
+        <link>https://www.teakettlelabs.com/blog/2022/10/13/fluency-vs-understanding.html</link>
+        <guid isPermaLink="true">https://www.teakettlelabs.com/blog/2022/10/13/fluency-vs-understanding.html</guid>
         
       </item>
     
@@ -458,8 +503,8 @@ A: More than 1,050,000
 
 </description>
         <pubDate>Thu, 29 Sep 2022 00:00:00 -0700</pubDate>
-        <link>https://teakettlelabs.com/blog/2022/09/29/concrete-harms-of-llms.html</link>
-        <guid isPermaLink="true">https://teakettlelabs.com/blog/2022/09/29/concrete-harms-of-llms.html</guid>
+        <link>https://www.teakettlelabs.com/blog/2022/09/29/concrete-harms-of-llms.html</link>
+        <guid isPermaLink="true">https://www.teakettlelabs.com/blog/2022/09/29/concrete-harms-of-llms.html</guid>
         
       </item>
     
@@ -526,8 +571,8 @@ A: More than 1,050,000
 
 </description>
         <pubDate>Thu, 15 Sep 2022 00:00:00 -0700</pubDate>
-        <link>https://teakettlelabs.com/blog/2022/09/15/bias-its-complicated.html</link>
-        <guid isPermaLink="true">https://teakettlelabs.com/blog/2022/09/15/bias-its-complicated.html</guid>
+        <link>https://www.teakettlelabs.com/blog/2022/09/15/bias-its-complicated.html</link>
+        <guid isPermaLink="true">https://www.teakettlelabs.com/blog/2022/09/15/bias-its-complicated.html</guid>
         
       </item>
     
@@ -573,7 +618,7 @@ A: More than 1,050,000
 &lt;h3 id=&quot;bias-in-large-datasets-and-models&quot;&gt;&lt;a href=&quot;/blog/2022/10/27/bias-in-large-datasets-and-models.html&quot;&gt;Bias in Large Datasets and Models&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Big data is key to LLMs, but how good is the data we’re training on? How can we work with data that has problems?&lt;/p&gt;
 
-&lt;h3 id=&quot;good-organizational-practices&quot;&gt;Good Organizational Practices&lt;/h3&gt;
+&lt;h3 id=&quot;good-organizational-practices&quot;&gt;&lt;a href=&quot;/blog/2022/11/10/org-practices-for-reducing-bias.html&quot;&gt;Good Organizational Practices&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;How should we approach designing and using LLMs? What are some good practices to follow?&lt;/p&gt;
 
 &lt;p&gt;We’re hoping that through this discussion we can help LLM application engineers and designers avoid a few of the pitfalls that come with such complex sociotechnical systems and create the best experience possible for users.&lt;/p&gt;
@@ -588,8 +633,8 @@ A: More than 1,050,000
 
 </description>
         <pubDate>Thu, 01 Sep 2022 00:00:00 -0700</pubDate>
-        <link>https://teakettlelabs.com/blog/2022/09/01/ethics-and-llms.html</link>
-        <guid isPermaLink="true">https://teakettlelabs.com/blog/2022/09/01/ethics-and-llms.html</guid>
+        <link>https://www.teakettlelabs.com/blog/2022/09/01/ethics-and-llms.html</link>
+        <guid isPermaLink="true">https://www.teakettlelabs.com/blog/2022/09/01/ethics-and-llms.html</guid>
         
       </item>
     

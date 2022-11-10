@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <title>Teakettle Labs</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="twitter:card" content="summary_large_image">
+<meta name="og:locale" content="en_US">
+<meta name="og:site_name" content="Teakettle Labs"><meta name="og:title" content="Good Organizational Practices for Reducing Bias">
+<meta name="twitter:title" content="Good Organizational Practices for Reducing Bias"><meta name="og:type" content="article"><meta name="og:image" content="https://www.teakettlelabs.com/assets/images/blog/2022-11-10-org-practices-for-reducing-bias/teakettle_good_practices_title_1.png">
+<meta name="twitter:image" content="https://www.teakettlelabs.com/assets/images/blog/2022-11-10-org-practices-for-reducing-bias/teakettle_good_practices_title_1.png"><meta name="og:url" content="https://www.teakettlelabs.com/blog/2022/11/10/org-practices-for-reducing-bias.html">
+<meta name="twitter:url" content="https://www.teakettlelabs.com/blog/2022/11/10/org-practices-for-reducing-bias.html"><meta name="description" content="In addition to technical solutions for reducing bias in Large Language Model applications, making some organizational changes can have even deeper, longer-lasting impact.">
+<meta name="og:description" content="In addition to technical solutions for reducing bias in Large Language Model applications, making some organizational changes can have even deeper, longer-lasting impact.">
+<meta name="twitter:description" content="In addition to technical solutions for reducing bias in Large Language Model applications, making some organizational changes can have even deeper, longer-lasting impact.">
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/rsq_logo_32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/rsq_logo_16.png">
+  <link rel="icon" type="image/png" sizes="96x96" href="/assets/images/rsq_logo_96.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/rsq_logo_192.png">
+  <link rel="icon" type="image/png" sizes="400x400" href="/assets/images/rsq_logo_400.png">
+  <link rel="alternate" type="application/rss+xml" href="https://www.teakettlelabs.com/blog/feed.xml"><script defer data-domain="teakettlelabs.com" src="https://plausible.io/js/plausible.js"></script></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">
+      <img src="/assets/images/logo_w_text_horizontal.png" alt="Teakettle Labs" height="40px">
+    </a>
+
+    <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About Us</a><a class="page-link" href="/blog/">Blog</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h2 class="post-title p-name" itemprop="name headline">Good Organizational Practices for Reducing Bias</h2>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2022-11-10T00:00:00-08:00" itemprop="datePublished">Nov 10, 2022
+      </time>
+      
+
+(6 minute read)
+
+•
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">
+            Shannon Ladymon
+          </span></span>•
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person"><span class="p-author h-card" itemprop="name">
+            Sushanth Sowmyan
+          </span></span></p><p>
+        <img src="/assets/images/blog/2022-11-10-org-practices-for-reducing-bias/teakettle_good_practices_title_1.png" alt="Good Organizational Practices for Reducing Bias" style="width:100%;margin-left:auto;margin-right:auto" />
+      </p></header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>In this <a href="/blog/2022/09/01/ethics-and-llms.html">series</a> on the problem of bias in Large Language Models (LLMs), we’ve talked about what bias is, the types of harms it causes, and some technical solutions to reduce it in our data and models. In general, we want to be careful with what kind of data we’re training models on and ensure it’s as high-quality and fair as we can get since that affects everything downstream.</p>
+
+<p>It’s also important for us to think about our pipelines and decisions as a whole and consider some of the larger organizational practices we can put into place to ensure that bias is reduced or caught early. These can be especially long-lasting and deeply impactful since bias in models is a systemic sociotechnical issue and can be mitigated on the social side even more effectively than on the technical side. In this final article in this series, we’ll discuss just a few of the organizational practices that can help you reduce bias in your models.</p>
+
+<h3 id="awareness">Awareness</h3>
+
+<p>The first step to addressing any problem is to be aware of it, the ways it can manifest, and to be on the lookout for it. We do not want to diminish the problem or dismiss it. We do want to adopt technical solutions where it makes sense to, but we need to know when they make sense. Reading up on bias in LLMs is a great start, as is talking about it with your team, looking at projects you’re working on to see where bias might be present, and continuing to learn more about the issue.</p>
+
+<p>You can check out organizations that are focusing on ethical AI, such as <a href="https://hai.stanford.edu/">Stanford’s institute for Human-Centered Artificial Intelligence</a>, or look at handbooks and resources on ethical AI, such as those made by <a href="https://haas.berkeley.edu/equity/industry/playbooks/mitigating-bias-in-ai/">Berkeley’s Haas Center for Equity, Gender, and Leadership</a> and <a href="https://www.scu.edu/ethics-in-technology-practice/">SCU’s Markkula Center for Applied Ethics</a>. You can also get more active and involved by attending a conference like <a href="https://facctconference.org/index.html">ACM’s Conference on Fairness, Accountability, and Transparency (ACM FAccT)</a> and engaging with a community of other people interested in AI ethics.</p>
+
+<h3 id="diversity-in-teams">Diversity in Teams</h3>
+
+<p>Related to awareness is the problem that often, “<em>you don’t know what you don’t know.</em>” The easiest way to spot a problem, especially related to bias or inequity, is to have had some experience with it in the past. When you’re already aware that a problem exists, it becomes easier to know when to look for it or how it might pop up. The more diverse set of experiences a team brings to the table, the better able they’ll be to spot problems and prevent them from entering the pipeline. Supporting diversity initiatives and outreach to improve the breadth of your team is a great idea, and it can also be helpful to reach out and build bridges to other groups who have those potential experiences that you lack. Bringing in as many experiences and perspectives as possible can help head problems off before they occur. This is crucial in teams across the board, be they developers, testers, product development or leadership. Prioritizing diversity also helps foster cultural humility which leads to longer term stability.</p>
+
+<h3 id="ethical-practices-throughout-the-pipeline">Ethical Practices Throughout the Pipeline</h3>
+
+<p>Since bias can enter the pipeline at any stage, it’s important to build ethical practices into every step, from design to production. Just as one wouldn’t (or at least shouldn’t!) release software without testing, one shouldn’t push out products without testing the effects of it. Ideologies of “failing-fast” don’t imply that one should “test-in-prod” - especially given the harms that biased models can cause for users. Ethics concerns belong from the ideation onward, not just tacked on at the end as an item in a checklist to be ticked off. Performance evaluation should consider ethical evaluation and action as well, not simply rewarding “getting things done”.</p>
+
+<p>We should keep in mind that our goal is cultural change. Training everyone in how to think about bias and ethical design is key to awareness and prevention, and it can be helpful to have a few specialists that anyone can go to when they have questions. Ethics committees can be formed to provide a team that supports this, or ethics ambassadors/champions can act as a go-to person on every team. All of us want to design fair systems and sometimes just struggle to know what best practices to follow, so having resources like these can be a huge help.</p>
+
+<h3 id="practical-tools-for-ethical-design">Practical Tools for Ethical Design</h3>
+
+<p>In addition to making sure you’re thinking about bias and ethics throughout the process, having a few practical tools that can become standard usage in your team can be useful in promoting careful design. <a href="http://aif360.mybluemix.net/">IBM’s AI Fairness 360 Toolkit</a> offers metrics to check for bias (as well as some algorithms to help mitigate it in models), which can be used in the same way you might use unit testing. <a href="https://doi.org/10.48550/arXiv.1810.03993">Model Cards</a> and <a href="https://doi.org/10.48550/arXiv.1803.09010">Datasheets for Datasets</a> are both methods of documentation that are gaining adoption in the industry as they help make design choices explicit and transparent. Especially since there are so many downstream applications of LLMs, documenting what exactly went into creating a dataset or training a model can be enormously helpful in recognizing where bias might creep in. They also are a great opportunity to reflect on the choices made when creating a dataset or model, which can help avoid pitfalls as well. Even making your own checklist (see the <a href="https://www.brookings.edu/research/algorithmic-bias-detection-and-mitigation-best-practices-and-policies-to-reduce-consumer-harms/">Brookings Institution’s design questions template</a> for an example) for the processes that help your team think through the ethics of any projects you work on could be useful as it helps build a culture of valuing ethical design.</p>
+
+<p>We hope that whatever you decide to try in your own circumstances, you’ll be more prepared to recognize and handle bias. And remember, “perfect is the enemy of good,” so focus on what you can do right now and keep improving as you go!</p>
+
+<table>
+  <tbody>
+    <tr>
+      <td><a href="/blog/2022/10/27/bias-in-large-datasets-and-models.html">&lt; Prev : Bias in Large Datasets and Models</a></td>
+      <td><a href="/blog/2022/09/01/ethics-and-llms.html"> ^ Up : Ethics and Large Language Models</a></td>
+    </tr>
+  </tbody>
+</table>
+
+
+  </div>
+
+  <a class="u-url" href="/blog/2022/11/10/org-practices-for-reducing-bias.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">Teakettle Labs</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name"></li><li><a class="u-email" href="mailto:info@teakettlelabs.com">info@teakettlelabs.com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3" style="text-align:right;">
+        <ul class="related-links" style="list-style:none;">
+          <li><a href=/about>About Us</a></li>
+          <li><a href=/privacy>Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
